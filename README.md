@@ -305,21 +305,11 @@ Contributions are welcome! Please feel free to:
 
 ---
 
-## 📊 Statistics
-
-- ⭐ 1.2k GitHub Stars
-- 🔀 180 Forks
-- 📥 5k+ Downloads
-- ✅ 98% Positive Reviews
-- 🌍 Used by developers in 50+ countries
-
----
-
 <div align="center">
 
 **Made with ❤️ by developers, for developers**
 
-[⭐ Star us on GitHub](https://github.com/Yami-no-Mi/zsh-pro-terminal) 
+
 
 </div>
 
