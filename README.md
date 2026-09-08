@@ -9,7 +9,6 @@ Transform your Linux terminal into a **professional hacker-mode shell** with bea
 [![Status](https://img.shields.io/badge/Status-Active-success.svg)]()
 [![Made with Love](https://img.shields.io/badge/Made%20with-❤️-red.svg)]()
 
-**[English](#english) | [فارسی](#فارسی)**
 
 </div>
 
@@ -134,7 +133,7 @@ c
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/zsh-pro-terminal.git
+git clone https://github.com/Yami-no-Mi/zsh-pro-terminal.git
 cd zsh-pro-terminal
 
 # Run the setup script
@@ -291,9 +290,6 @@ Contributions are welcome! Please feel free to:
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
@@ -303,9 +299,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📧 Support
 
-**Found a bug?** [Open an issue](https://github.com/yourusername/zsh-pro-terminal/issues)
+**Found a bug?** [Open an issue](https://github.com/Yami-no-Mi/zsh-pro-terminal/issues)
 
-**Have suggestions?** [Start a discussion](https://github.com/yourusername/zsh-pro-terminal/discussions)
+**Have suggestions?** [Start a discussion](https://github.com/Yami-no-Mi/zsh-pro-terminal/discussions)
 
 ---
 
@@ -323,212 +319,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Made with ❤️ by developers, for developers**
 
-[⭐ Star us on GitHub](https://github.com/yourusername/zsh-pro-terminal) | [🐦 Follow on Twitter](https://twitter.com) | [💬 Join Discord](https://discord.gg)
+[⭐ Star us on GitHub](https://github.com/Yami-no-Mi/zsh-pro-terminal) 
 
 </div>
 
----
-
-# فارسی
-
-## 🎯 این چیست؟
-
-یک **پیکربندی ZSH آماده برای تولید** که برای توسعه‌دهندگانی طراحی شده است که می‌خواهند:
-- ✨ Prompt زیبای دو خطی با اطلاعات git
-- 🎨 ظاهر هکری با رنگ‌های حرفه‌ای
-- ⚡ 50+ alias مفید برای توسعه روزانه
-- 🔧 توابع هوشمند برای workflow های git
-- 📦 پلاگین‌های پیش‌تنظیم شده
-- 🚀 بدون وابستگی خارجی
-- 💪 بلافاصله روی Ubuntu/Debian کار می‌کند
-
-## 📸 نتیجه نهایی
-
-```
-╭─ raga@raga-HP ~/projects (develop) ●
-╰─ ❯ 
-```
-
-## 🔥 ویژگی‌های اصلی
-
-### 1. **Prompt دو خطی جذاب**
-- خطوط تزئینی بنفش
-- بخش‌های رنگی
-- شناسایی خودکار شاخه git
-- وضعیت Dirty (تغییرات ناپذیر)
-
-### 2. **Aliases هوشمند** (50+)
-
-#### Git Aliases
-```bash
-gs              # git status
-gaa             # git add .
-gc "message"    # git commit -m
-gp              # git push
-gpl             # git pull
-gl              # git log
-```
-
-#### npm Aliases
-```bash
-ni              # npm install
-nr              # npm run
-nrb             # npm run build
-nrd             # npm run dev
-```
-
-#### Aliases عمومی
-```bash
-la              # ls -lah
-..              # cd ..
-c               # clear
-```
-
-### 3. **توابع هوشمند**
-
-```bash
-create_branch my-feature    # شاخه جدید
-gpush "message"             # commit + push
-projects                    # رفتن به پوشه projects
-```
-
-## 📋 نیازمندی‌ها
-
-- **OS**: Ubuntu 20.04+ / Debian 11+
-- **ZSH**: 5.8+
-- **Oh My Zsh**: (خودکار نصب می‌شود)
-- **Git**: برای ویژگی‌های کنترل ورژن
-
-## ⚡ شروع سریع
-
-### مرحله ۱: نصب Oh My Zsh
-```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-```
-
-### مرحله ۲: نصب پلاگین‌ها
-```bash
-# zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-
-# zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-
-# zsh-completions
-git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-completions
-```
-
-### مرحله ۳: نصب فونت‌ها
-```bash
-sudo apt update
-sudo apt install -y fonts-fira-code fonts-cascadia-code fonts-jetbrains-mono
-```
-
-### مرحله ۴: کپی فایل‌های تنظیمات
-
-```bash
-# Backup
-cp ~/.zshrc ~/.zshrc.backup
-
-# کپی فایل جدید
-cp .zshrc ~/.zshrc
-```
-
-### مرحله ۵: بازنشانی Shell
-```bash
-source ~/.zshrc
-```
-
-## 🎨 سفارشی‌سازی
-
-### تغییر رنگ Prompt
-
-`~/.zshrc` را ویرایش کنید و این بخش را پیدا کنید:
-
-```bash
-# Prompt section
-PROMPT='%F{magenta}╭─%f ...'  # magenta را تغییر دهید
-```
-
-رنگ‌های موجود:
-- magenta, red, green, blue, cyan, white, yellow, black
-
-### اضافه کردن Aliases سفارشی
-
-```bash
-alias yourname='command here'
-```
-
-## 🐛 حل‌مسائل
-
-### مشکل: Parse error near `()`
-**حل**: نام توابع تضادی را تغییر دهید
-
-### مشکل: نمادها به درستی نمایش داده نمی‌شوند
-**حل**: یک Nerd Font نصب کنید
-```bash
-sudo apt install fonts-fira-code
-```
-
-### مشکل: ترمینال کند شروع می‌شود
-**حل**: پلاگین‌های استفاده نشده را حذف کنید
-
-## 🚀 کارایی
-
-- **زمان شروع**: ~150ms
-- **حافظه**: ~20MB
-- **git integration**: بلادرنگ
-
-## 💡 نکات و ترفندها
-
-### تسریع شناسایی شاخه git
-برای repository های بزرگ:
-```bash
-# در ~/.zshrc، توابع git را comment کنید
-```
-
-### استفاده از aliases با آرگومان
-```bash
-gc "fix: issue resolved"
-```
-
-### ایجاد میانبر‌های شخصی
-```bash
-alias proj='cd ~/projects && ls -lah'
-alias dev='npm run dev'
-```
-
-## 🤝 مشارکت
-
-مشارکت‌ها خوش‌آمد هستند!
-1. Repository را Fork کنید
-2. شاخه ویژگی ایجاد کنید
-3. تغییرات را Commit کنید
-4. به شاخه Push کنید
-5. Pull Request باز کنید
-
-## 📝 لایسنس
-
-این پروژه تحت لایسنس MIT است.
-
-## 🙏 تشکر
-
-- [Oh My Zsh](https://ohmyz.sh/)
-- [Starship](https://starship.rs/)
-- تمام مشارکین
-
-## 📧 پشتیبانی
-
-**باگ پیدا کردید؟** [Issue باز کنید](https://github.com/yourusername/zsh-pro-terminal/issues)
-
-**پیشنهاد دارید؟** [بحث شروع کنید](https://github.com/yourusername/zsh-pro-terminal/discussions)
-
----
-
-<div align="center">
-
-**با ❤️ برای توسعه‌دهندگان ساخته شده**
-
-[⭐ ما را در GitHub Star کنید](https://github.com/yourusername/zsh-pro-terminal)
-
-</div>
