@@ -1,0 +1,239 @@
+# ╔═══════════════════════════════════════════════════════════════╗
+# ║  ZSH Configuration - Optimized for RAGA Development            ║
+# ║  Professional 2-Line Hacker Mode Prompt                        ║
+# ║  By: Claude AI Assistant                                       ║
+# ╚═══════════════════════════════════════════════════════════════╝
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# PATH Configuration
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Oh My Zsh Setup
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+export ZSH="$HOME/.oh-my-zsh"
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Theme Configuration
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ZSH_THEME=""
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Update Configuration
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+zstyle ':omz:update' mode auto      # Update automatically without asking
+zstyle ':omz:update' frequency 13   # Check for updates every 13 days
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Shell Behavior
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CASE_SENSITIVE="false"
+HYPHEN_INSENSITIVE="true"
+ENABLE_CORRECTION="true"
+COMPLETION_WAITING_DOTS="true"
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# History Configuration
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+HIST_STAMPS="yyyy-mm-dd"
+HISTSIZE=10000
+SAVEHIST=10000
+setopt APPEND_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_FIND_NO_DUPS
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Plugins
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+plugins=(
+  git
+  node
+  npm
+  docker
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  zsh-completions
+)
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Load Oh My Zsh
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+source $ZSH/oh-my-zsh.sh
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Custom Prompt Configuration (2-Line Hacker Mode)
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# Function to get git branch
+git_branch_info() {
+    local branch
+    branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+    if [ -n "$branch" ] && [ "$branch" != "HEAD" ]; then
+        echo " %F{yellow}($branch)%f"
+    fi
+}
+
+# Function to get git status (dirty/clean)
+git_status_icon() {
+    if git rev-parse --git-dir > /dev/null 2>&1; then
+        if git diff --quiet 2>/dev/null; then
+            echo ""
+        else
+            echo " %F{red}●%f"
+        fi
+    fi
+}
+
+# PROMPT Line 1: User@Host + Path + Git Info
+PROMPT='%F{magenta}╭─%f %F{green}%n%f%F{white}@%f%F{blue}%m%f %F{cyan}%~%f$(git_branch_info)$(git_status_icon)
+'
+
+# PROMPT Line 2: Arrow for input
+PROMPT+='%F{magenta}╰─%f %F{green}❯%f '
+
+# Right side (optional)
+RPROMPT=''
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Autocompletion
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+autoload -U compinit
+compinit -u
+fpath+=~/.zfunc
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Auto Suggestions Styling
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=245'
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Language & Editor
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+if command -v nvim &> /dev/null; then
+  export EDITOR='nvim'
+else
+  export EDITOR='vim'
+fi
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Aliases - General
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+alias ls='ls --color=auto'
+alias la='ls -lah'
+alias ll='ls -lh'
+alias l='ls -1'
+alias cd..='cd ..'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias cls='clear'
+alias mkdir='mkdir -p'
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+alias cat='cat'
+alias grep='grep --color=auto'
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Aliases - Development (RAGA)
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+alias gs='git status'
+alias ga='git add'
+alias gaa='git add .'
+alias gc='git commit -m'
+alias gp='git push'
+alias gpl='git pull'
+alias gl='git log --oneline -10'
+alias gd='git diff'
+alias gb='git branch'
+alias gch='git checkout'
+alias gm='git merge'
+alias gr='git reset'
+alias gst='git stash'
+
+# Node.js & npm
+alias ni='npm install'
+alias nid='npm install --save-dev'
+alias nir='npm install --save'
+alias nr='npm run'
+alias nrb='npm run build'
+alias nrd='npm run dev'
+alias nrt='npm run test'
+alias nrw='npm run watch'
+alias nl='npm list'
+
+# Code editors
+alias code='code .'
+alias vim='vim'
+alias v='vim'
+alias nv='nvim'
+
+# Docker aliases
+alias dc='docker compose'
+alias dcup='docker compose up -d'
+alias dcdown='docker compose down'
+alias dclogs='docker compose logs -f'
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Aliases - VPN/Network (RAGA Specific)
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+alias wgup='sudo wg-quick up wg0'
+alias wgdown='sudo wg-quick down wg0'
+alias wgstatus='sudo wg show'
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Functions
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# Quick project opener
+projects() {
+  cd ~/projects
+  ls -lah
+}
+
+# Git branch creator (fixed - not an alias)
+create_branch() {
+  git checkout -b "$1"
+}
+
+# Git commit and push in one command
+gcp() {
+    git add .
+    git commit -m "$1"
+    git push
+}
+
+# Clear screen
+c() {
+    clear
+}
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Node Version Manager (nvm) - if installed
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Custom Greeting
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+if [ -z "$ZSHRC_LOADED" ]; then
+  echo ""
+  echo "╔═══════════════════════════════════════════════╗"
+  echo "║  Welcome رگا 🚀                               ║"
+  echo "║  RAGA Development Terminal                   ║"
+  echo "║  Ready to code ✨                             ║"
+  echo "╚═══════════════════════════════════════════════╝"
+  echo ""
+  export ZSHRC_LOADED=1
+fi
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# END OF CONFIGURATION
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

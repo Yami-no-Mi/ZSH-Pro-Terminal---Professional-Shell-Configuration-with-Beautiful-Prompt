@@ -1,0 +1,119 @@
+# ╔═══════════════════════════════════════════════════════════════╗
+# ║  Starship Configuration - Beautiful Prompt                     ║
+# ║  For: RAGA Development Team                                    ║
+# ╚═══════════════════════════════════════════════════════════════╝
+
+# Default timeout
+command_timeout = 500
+scan_timeout = 30
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Format - Main Prompt
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_status\
+$nodejs\
+$docker_context\
+$line_break\
+$character"""
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Character Module
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[character]
+success_symbol = "[➜](bold #2bcc71)"
+error_symbol = "[➜](bold #e74c3c)"
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Directory Module
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[directory]
+truncation_length = 3
+truncate_to_repo = false
+style = "bold #3498db"
+format = "[$path]($style) "
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Git Branch
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[git_branch]
+symbol = " "
+format = "on [$symbol$branch]($style) "
+style = "bold #9b59b6"
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Git Status
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[git_status]
+format = "([\\[$all_status$ahead_behind\\]]($style) )"
+style = "bold #e74c3c"
+conflicted = "⚔️  "
+ahead = "⇡${count} "
+behind = "⇣${count} "
+diverged = "⇕⇡${ahead_count}⇣${behind_count} "
+untracked = "🤷 "
+stashed = "📦 "
+modified = "✏️  "
+staged = "[++\\($count\\)](green) "
+renamed = "👅 "
+deleted = "🗑️  "
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Node.js
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[nodejs]
+symbol = " "
+format = "with [$symbol($version)]($style) "
+style = "bold #2ecc71"
+detect_extensions = ["js", "mjs", "cjs", "ts", "tsx", "jsx"]
+detect_files = ["package.json", ".node-version", ".nvmrc"]
+detect_folders = ["node_modules"]
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Docker Context
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[docker_context]
+symbol = "🐳 "
+format = "with [$symbol($context)]($style) "
+style = "bold #3498db"
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Username
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[username]
+show_always = false
+format = "[$user]($style) "
+style_user = "bold #f39c12"
+style_root = "bold #e74c3c"
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Hostname
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[hostname]
+ssh_only = false
+ssh_symbol = "🌐 "
+format = "on [$ssh_symbol$hostname]($style) "
+style = "bold #16a085"
+disabled = true
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Line Break
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[line_break]
+disabled = false
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Status (disabled for cleaner look)
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[status]
+disabled = true
